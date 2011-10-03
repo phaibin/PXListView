@@ -75,4 +75,6 @@
 - (void)scrollToRow:(NSUInteger)row;
 - (void)scrollRowToVisible:(NSUInteger)row;
 
+- (NSRect)contentViewRect;
+
 @end

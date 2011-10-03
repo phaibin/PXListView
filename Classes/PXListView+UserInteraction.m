@@ -126,15 +126,15 @@ static PXIsDragStartResult PXIsDragStart( NSEvent *startEvent, NSTimeInterval th
 
 - (void)moveDown:(id)sender
 {
-    if([_selectedRows count]>0) {
-        NSUInteger lastIndex = [_selectedRows lastIndex];
-        
-        if(lastIndex<(_numberOfRows-1)) {
-            NSUInteger newRow = lastIndex+1;
-            [self setSelectedRow:newRow];
-            [self scrollRowToVisible:newRow];
-        }
-    }
+//    if([_selectedRows count]>0) {
+//        NSUInteger lastIndex = [_selectedRows lastIndex];
+//        
+//        if(lastIndex<(_numberOfRows-1)) {
+//            NSUInteger newRow = lastIndex+1;
+//            [self setSelectedRow:newRow];
+//            [self scrollRowToVisible:newRow];
+//        }
+//    }
 }
 
 
@@ -172,9 +172,9 @@ static PXIsDragStartResult PXIsDragStart( NSEvent *startEvent, NSTimeInterval th
     BOOL		isSelected = [_selectedRows containsIndex: [theCell row]];
     NSIndexSet	*clickedIndexSet = [NSIndexSet indexSetWithIndex: [theCell row]];
     
-    // If a cell is already selected, we can drag it out, in which case we shouldn't toggle it:
-    if( theEvent && isSelected && [self attemptDragWithMouseDown: theEvent inCell: theCell] )
-        return;
+//    // If a cell is already selected, we can drag it out, in which case we shouldn't toggle it:
+//    if( theEvent && isSelected && [self attemptDragWithMouseDown: theEvent inCell: theCell] )
+//        return;
     
     if( _allowsMultipleSelection )
     {
@@ -210,8 +210,8 @@ static PXIsDragStartResult PXIsDragStart( NSEvent *startEvent, NSTimeInterval th
     }
     
     // If a user selects a cell, they need to be able to drag it off right away, so check for that case here:
-    if( tryDraggingAgain && theEvent && [_selectedRows containsIndex: [theCell row]] )
-        [self attemptDragWithMouseDown: theEvent inCell: theCell];
+//    if( tryDraggingAgain && theEvent && [_selectedRows containsIndex: [theCell row]] )
+//        [self attemptDragWithMouseDown: theEvent inCell: theCell];
 }
 
 

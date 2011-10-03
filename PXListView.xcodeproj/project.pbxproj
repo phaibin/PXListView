@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		35DCDBD014396103001A0601 /* MMDrawingUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 35DCDBCD14396103001A0601 /* MMDrawingUtils.m */; };
+		35DCDBD114396103001A0601 /* MMScroller.m in Sources */ = {isa = PBXBuildFile; fileRef = 35DCDBCF14396103001A0601 /* MMScroller.m */; };
+		35DCDBD5143965E0001A0601 /* MyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 35DCDBD4143965E0001A0601 /* MyView.m */; };
 		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
 		D25DDA7F133F58A20086783B /* PXListView+UserInteraction.m in Sources */ = {isa = PBXBuildFile; fileRef = D25DDA7E133F58A10086783B /* PXListView+UserInteraction.m */; };
@@ -28,6 +31,12 @@
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		29B97324FDCFA39411CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
+		35DCDBCC14396103001A0601 /* MMDrawingUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMDrawingUtils.h; sourceTree = "<group>"; };
+		35DCDBCD14396103001A0601 /* MMDrawingUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMDrawingUtils.m; sourceTree = "<group>"; };
+		35DCDBCE14396103001A0601 /* MMScroller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMScroller.h; sourceTree = "<group>"; };
+		35DCDBCF14396103001A0601 /* MMScroller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMScroller.m; sourceTree = "<group>"; };
+		35DCDBD3143965E0001A0601 /* MyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyView.h; sourceTree = "<group>"; };
+		35DCDBD4143965E0001A0601 /* MyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyView.m; sourceTree = "<group>"; };
 		55B9AC9E11EA384C00416532 /* PXListViewDropHighlight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PXListViewDropHighlight.h; path = Classes/PXListViewDropHighlight.h; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* PXListView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PXListView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D25DDA7D133F58A10086783B /* PXListView+UserInteraction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "PXListView+UserInteraction.h"; path = "Classes/PXListView+UserInteraction.h"; sourceTree = "<group>"; };
@@ -122,6 +131,18 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		35DCDBCB14396103001A0601 /* MMScroller */ = {
+			isa = PBXGroup;
+			children = (
+				35DCDBCC14396103001A0601 /* MMDrawingUtils.h */,
+				35DCDBCD14396103001A0601 /* MMDrawingUtils.m */,
+				35DCDBCE14396103001A0601 /* MMScroller.h */,
+				35DCDBCF14396103001A0601 /* MMScroller.m */,
+			);
+			name = MMScroller;
+			path = Classes/MMScroller;
+			sourceTree = "<group>";
+		};
 		D25DDA7A133F568F0086783B /* PXListView */ = {
 			isa = PBXGroup;
 			children = (
@@ -131,6 +152,7 @@
 				D27858D711B1B6D400F1CF30 /* PXListViewDelegate.h */,
 				D25DDA7D133F58A10086783B /* PXListView+UserInteraction.h */,
 				D25DDA7E133F58A10086783B /* PXListView+UserInteraction.m */,
+				35DCDBCB14396103001A0601 /* MMScroller */,
 				D279A68911B4ECAB00771B2A /* Cells */,
 				D278592911B1BA7900F1CF30 /* Misc */,
 			);
@@ -140,6 +162,8 @@
 		D25DDA7B133F569B0086783B /* Demo App */ = {
 			isa = PBXGroup;
 			children = (
+				35DCDBD3143965E0001A0601 /* MyView.h */,
+				35DCDBD4143965E0001A0601 /* MyView.m */,
 				D26669C911B1B2F1007597F1 /* AppDelegate.h */,
 				D26669CA11B1B2F1007597F1 /* AppDelegate.m */,
 				D26669D011B1B302007597F1 /* MainMenu.xib */,
@@ -247,6 +271,9 @@
 				D278592411B1BA6C00F1CF30 /* PXListDocumentView.m in Sources */,
 				D278597011B1BBE800F1CF30 /* MyListViewCell.m in Sources */,
 				D25DDA7F133F58A20086783B /* PXListView+UserInteraction.m in Sources */,
+				35DCDBD014396103001A0601 /* MMDrawingUtils.m in Sources */,
+				35DCDBD114396103001A0601 /* MMScroller.m in Sources */,
+				35DCDBD5143965E0001A0601 /* MyView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -299,7 +326,7 @@
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_LABEL = YES;
-				GCC_WARN_UNUSED_PARAMETER = YES;
+				GCC_WARN_UNUSED_PARAMETER = NO;
 				GCC_WARN_UNUSED_VALUE = YES;
 				INFOPLIST_FILE = "Resources/PXListView-Info.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
@@ -331,7 +358,7 @@
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_LABEL = YES;
-				GCC_WARN_UNUSED_PARAMETER = YES;
+				GCC_WARN_UNUSED_PARAMETER = NO;
 				GCC_WARN_UNUSED_VALUE = YES;
 				INFOPLIST_FILE = "Resources/PXListView-Info.plist";
 				INSTALL_PATH = "$(HOME)/Applications";

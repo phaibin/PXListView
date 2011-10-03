@@ -15,6 +15,11 @@
 
 NSString * const PXListViewSelectionDidChange = @"PXListViewSelectionDidChange";
 
+@interface PXListView()
+
+@property (retain) NSScroller *retainVerticalScroller;
+
+@end
 
 @implementation PXListView
 
@@ -23,6 +28,7 @@ NSString * const PXListViewSelectionDidChange = @"PXListViewSelectionDidChange";
 @synthesize allowsEmptySelection = _allowsEmptySelection;
 @synthesize verticalMotionCanBeginDrag = _verticalMotionCanBeginDrag;
 @synthesize usesLiveResize = _usesLiveResize;
+@synthesize retainVerticalScroller = _retainVerticalScroller;
 
 #pragma mark -
 #pragma mark Init/Dealloc
@@ -78,8 +84,31 @@ NSString * const PXListViewSelectionDidChange = @"PXListViewSelectionDidChange";
 	[_reusableCells release], _reusableCells = nil;
 	[_visibleCells release], _visibleCells = nil;
 	[_selectedRows release], _selectedRows = nil;
-	
+	[_retainVerticalScroller release];
+    
 	[super dealloc];
+}
+
+- (void)tile
+{
+    [self layoutCells];
+	NSRect frame;
+	CGFloat height;
+    
+	[[self contentView] setFrame:[self bounds]];
+    height = [self bounds].size.height;
+	frame = NSMakeRect([self bounds].size.width - 15, 0, 15, height);
+	[[self verticalScroller] setFrame:frame];
+	
+    if ([self.documentView frame].size.height > self.frame.size.height) {
+        [self.verticalScroller retain];
+        [self.verticalScroller removeFromSuperview];
+        [self addSubview:self.verticalScroller];
+        [self.verticalScroller release];
+    } else {
+        self.retainVerticalScroller = self.verticalScroller;
+        [self.verticalScroller removeFromSuperview];
+    }
 }
 
 #pragma mark -
@@ -441,15 +470,16 @@ NSString * const PXListViewSelectionDidChange = @"PXListViewSelectionDidChange";
 
 - (NSRect)contentViewRect
 {
-	NSRect frame = [self frame];
-	NSSize frameSize = NSMakeSize(NSWidth(frame), NSHeight(frame));
-	BOOL hasVertScroller = NSHeight(frame) < _totalHeight;
-	NSSize availableSize = [[self class] contentSizeForFrameSize:frameSize
-										   hasHorizontalScroller:NO
-											 hasVerticalScroller:hasVertScroller
-													  borderType:[self borderType]];
-	
-	return NSMakeRect(0.0f, 0.0f, availableSize.width, availableSize.height);
+    return [self frame];
+//	NSRect frame = [self frame];
+//	NSSize frameSize = NSMakeSize(NSWidth(frame), NSHeight(frame));
+//	BOOL hasVertScroller = NSHeight(frame) < _totalHeight;
+//	NSSize availableSize = [[self class] contentSizeForFrameSize:frameSize
+//										   hasHorizontalScroller:NO
+//											 hasVerticalScroller:hasVertScroller
+//													  borderType:[self borderType]];
+//	
+//	return NSMakeRect(0.0f, 0.0f, availableSize.width, availableSize.height);
 }
 
 - (NSRect)rectOfRow:(NSUInteger)row
@@ -464,7 +494,6 @@ NSString * const PXListViewSelectionDidChange = @"PXListViewSelectionDidChange";
         }
 
 		CGFloat rowHeight = [delegate listView:self heightOfRow:row];
-		
 		return NSMakeRect(0.0f, _cellYOffsets[row], cellWidth, rowHeight);
 	}
 	
@@ -494,7 +523,6 @@ NSString * const PXListViewSelectionDidChange = @"PXListViewSelectionDidChange";
 		
 		NSRect bounds = [self bounds];
 		CGFloat documentHeight = _totalHeight>NSHeight(bounds)?_totalHeight: (NSHeight(bounds) -2);
-		
 		[[self documentView] setFrame:NSMakeRect(0.0f, 0.0f, NSWidth([self contentViewRect]), documentHeight)];
 	}
 }
@@ -545,6 +573,7 @@ NSString * const PXListViewSelectionDidChange = @"PXListViewSelectionDidChange";
     else if([self inLiveResize]&&![self usesLiveResize]) {
         [self updateCells];
     }
+//    [self.delegate listViewResize:self];
 }
 
 #pragma mark -
@@ -605,55 +634,55 @@ NSString * const PXListViewSelectionDidChange = @"PXListViewSelectionDidChange";
 #pragma mark -
 #pragma mark Sizing
 
-- (void)viewWillStartLiveResize
-{
-    _widthPriorToResize = NSWidth([self contentViewRect]);
-    if([self usesLiveResize])
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(windowSizing:) name:NSSplitViewDidResizeSubviewsNotification object:self.superview];
-}
+//- (void)viewWillStartLiveResize
+//{
+//    _widthPriorToResize = NSWidth([self contentViewRect]);
+//    if([self usesLiveResize])
+//        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(windowSizing:) name:NSSplitViewDidResizeSubviewsNotification object:self.superview];
+//}
 
 -(void)layoutCellsForResizeEvent 
 {
-    //Change the layout of the cells
-    [_visibleCells removeAllObjects];
-    [[self documentView] setSubviews:[NSArray array]];
-    
-    [self cacheCellLayout];
-    [self addCellsFromVisibleRange];
-    
-    if ([_delegate conformsToProtocol:@protocol(PXListViewDelegate)])
-    {
-        CGFloat totalHeight = 0;
-        
-        for (NSUInteger i = 0; i < _numberOfRows; i++)
-        {
-            CGFloat cellHeight = [_delegate listView:self heightOfRow:i];
-            totalHeight += cellHeight +[self cellSpacing];
-        }
-        
-        _totalHeight = totalHeight;
-        
-        NSRect bounds = [self bounds];
-        CGFloat documentHeight = _totalHeight > NSHeight(bounds) ? _totalHeight:(NSHeight(bounds) - 2);
-        
-        [[self documentView] setFrame:NSMakeRect(0.0f, 0.0f, NSWidth([self contentViewRect]), documentHeight)];
-    }
-    
-    _currentRange = [self visibleRange];
+//    //Change the layout of the cells
+//    [_visibleCells removeAllObjects];
+//    [[self documentView] setSubviews:[NSArray array]];
+//    
+//    [self cacheCellLayout];
+//    [self addCellsFromVisibleRange];
+//    
+//    if ([_delegate conformsToProtocol:@protocol(PXListViewDelegate)])
+//    {
+//        CGFloat totalHeight = 0;
+//        
+//        for (NSUInteger i = 0; i < _numberOfRows; i++)
+//        {
+//            CGFloat cellHeight = [_delegate listView:self heightOfRow:i];
+//            totalHeight += cellHeight +[self cellSpacing];
+//        }
+//        
+//        _totalHeight = totalHeight;
+//        
+//        NSRect bounds = [self bounds];
+//        CGFloat documentHeight = _totalHeight > NSHeight(bounds) ? _totalHeight:(NSHeight(bounds) - 2);
+//        
+//        [[self documentView] setFrame:NSMakeRect(0.0f, 0.0f, NSWidth([self contentViewRect]), documentHeight)];
+//    }
+//    
+//    _currentRange = [self visibleRange];
 }
 
--(void)viewDidEndLiveResize
-{
-    [super viewDidEndLiveResize];
-    
-    //If we use live resize the view will already be up to date
-    if (![self usesLiveResize])
-    {
-        [self layoutCellsForResizeEvent];
-    }
-    if ([self usesLiveResize])
-        [[NSNotificationCenter defaultCenter] removeObserver:self name:NSSplitViewDidResizeSubviewsNotification object:self.superview];
-}
+//-(void)viewDidEndLiveResize
+//{
+//    [super viewDidEndLiveResize];
+//    
+//    //If we use live resize the view will already be up to date
+//    if (![self usesLiveResize])
+//    {
+//        [self layoutCellsForResizeEvent];
+//    }
+//    if ([self usesLiveResize])
+//        [[NSNotificationCenter defaultCenter] removeObserver:self name:NSSplitViewDidResizeSubviewsNotification object:self.superview];
+//}
 
 -(void)windowSizing:(NSNotification *)inNot
 {

@@ -18,6 +18,8 @@
 	NSMutableArray *_listItems;
 }
 
+@property (nonatomic, retain) NSMutableArray *heightList;
+
 - (IBAction)reloadTable:(id)sender;
 
 @end

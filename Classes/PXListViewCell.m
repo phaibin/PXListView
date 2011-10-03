@@ -47,7 +47,7 @@
     
     [cellNib release];
     
-    return cell;
+    return [cell autorelease];
 }
 
 #pragma mark -

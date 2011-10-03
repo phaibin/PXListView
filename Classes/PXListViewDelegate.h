@@ -33,5 +33,6 @@ extern NSString * const PXListViewSelectionDidChange;
       acceptDrop:(id <NSDraggingInfo>)info
              row:(NSUInteger)row
    dropHighlight:(PXListViewDropHighlight)dropHighlight;
+- (void)listViewResize:(PXListView *)aListView;
 
 @end
