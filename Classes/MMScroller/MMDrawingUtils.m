@@ -27,7 +27,7 @@ void MMStrokeRoundedRect(NSRect rect, CGFloat x, CGFloat y)
 
 static void MMDrawPath(CGContextRef context, CGRect rect, float ovalWidth, float ovalHeight)
 {
-    float fw, fh;
+    CGFloat fw, fh;
     
     if (ovalWidth == 0 || ovalHeight == 0) {
         CGContextAddRect(context, rect);

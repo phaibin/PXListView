@@ -19,6 +19,7 @@
 
 - (void)reloadData;
 - (void)measureData;
+- (void)windowResized:(NSNotification *)notification;
 
 @end
 
@@ -82,14 +83,14 @@
 //                                                                 attributes:attrs];
 //        float width = listView.contentView.frame.size.width;
 //        float answer = [as heightForWidth:width];
-        float width = listView.contentView.frame.size.width;
+        CGFloat width = listView.contentView.frame.size.width;
         NSTextField *textField = [[NSTextField alloc] initWithFrame:CGRectMake(0, 0, width, 1000)];
         textField.font = [NSFont boldSystemFontOfSize:13];
         textField.stringValue = s;
         NSSize size = [textField.cell cellSizeForBounds:textField.frame];
         [textField release];
         
-        [self.heightList addObject:[NSNumber numberWithFloat:size.height]];
+        [self.heightList addObject:[NSNumber numberWithFloat:(float)size.height]];
     }
 }
 

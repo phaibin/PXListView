@@ -14,6 +14,7 @@
 - (void) _showKnob;
 - (void) _updateKnob;
 - (void) _updateKnobAfterDelay;
+- (void) _showKnobAfterDelay;
 
 @end
 
