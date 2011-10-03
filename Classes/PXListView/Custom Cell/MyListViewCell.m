@@ -7,8 +7,8 @@
 //
 
 #import "MyListViewCell.h"
-
 #import <iso646.h>
+#import "PXListViewConstants.h"
 
 
 @implementation MyListViewCell

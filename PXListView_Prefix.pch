@@ -6,5 +6,4 @@
     #import <Cocoa/Cocoa.h>
 #endif
 
-#define RGBCOLOR(R,G,B) [NSColor colorWithCalibratedRed:R/255.0f green:G/255.0f blue:B/255.0f alpha:1.0f]
 #define LISTVIEW_RESIZED_NOTIFICATION @"LISTVIEW_RESIZED_NOTIFICATION"

@@ -51,6 +51,7 @@
 		35D7BFF414396DDC000F82DD /* PXListViewDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PXListViewDelegate.h; sourceTree = "<group>"; };
 		35D7BFFD14396E3F000F82DD /* MyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyView.h; path = Classes/MyView.h; sourceTree = "<group>"; };
 		35D7BFFE14396E3F000F82DD /* MyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyView.m; path = Classes/MyView.m; sourceTree = "<group>"; };
+		35D7C00014396F9C000F82DD /* PXListViewConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PXListViewConstants.h; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* PXListView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PXListView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D26669C911B1B2F1007597F1 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = Classes/AppDelegate.h; sourceTree = "<group>"; };
 		D26669CA11B1B2F1007597F1 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = Classes/AppDelegate.m; sourceTree = "<group>"; };
@@ -142,6 +143,7 @@
 				35D7BFF114396DDC000F82DD /* PXListView+UserInteraction.m */,
 				35D7BFF214396DDC000F82DD /* PXListView.h */,
 				35D7BFF314396DDC000F82DD /* PXListView.m */,
+				35D7C00014396F9C000F82DD /* PXListViewConstants.h */,
 				35D7BFF414396DDC000F82DD /* PXListViewDelegate.h */,
 			);
 			name = PXListView;
